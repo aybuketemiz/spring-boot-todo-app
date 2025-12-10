@@ -28,11 +28,6 @@
                             <i class="fas fa-user-plus text-primary"></i> Register
                         </h2>
                         
-                        <div th:if="${#fields.hasGlobalErrors()}" class="alert alert-danger" role="alert">
-                            <i class="fas fa-exclamation-circle"></i>
-                            <span th:each="error : ${#fields.globalErrors()}" th:text="${error}"></span>
-                        </div>
-                        
                         <form th:action="@{/register}" th:object="${user}" method="post">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
@@ -41,12 +36,8 @@
                                         <i class="fas fa-user"></i>
                                     </span>
                                     <input type="text" class="form-control" 
-                                           th:classappend="${#fields.hasErrors('username')} ? 'is-invalid' : ''"
                                            id="username" th:field="*{username}" 
                                            placeholder="Choose a username" required autofocus>
-                                </div>
-                                <div th:if="${#fields.hasErrors('username')}" class="invalid-feedback d-block">
-                                    <span th:errors="*{username}"></span>
                                 </div>
                                 <small class="form-text text-muted">3-50 characters</small>
                             </div>
@@ -58,12 +49,8 @@
                                         <i class="fas fa-envelope"></i>
                                     </span>
                                     <input type="email" class="form-control" 
-                                           th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''"
                                            id="email" th:field="*{email}" 
                                            placeholder="Enter your email" required>
-                                </div>
-                                <div th:if="${#fields.hasErrors('email')}" class="invalid-feedback d-block">
-                                    <span th:errors="*{email}"></span>
                                 </div>
                             </div>
                             
@@ -74,12 +61,8 @@
                                         <i class="fas fa-lock"></i>
                                     </span>
                                     <input type="password" class="form-control" 
-                                           th:classappend="${#fields.hasErrors('password')} ? 'is-invalid' : ''"
                                            id="password" th:field="*{password}" 
                                            placeholder="Choose a password" required>
-                                </div>
-                                <div th:if="${#fields.hasErrors('password')}" class="invalid-feedback d-block">
-                                    <span th:errors="*{password}"></span>
                                 </div>
                                 <small class="form-text text-muted">At least 6 characters</small>
                             </div>
