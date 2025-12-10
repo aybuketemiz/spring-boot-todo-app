@@ -51,7 +51,7 @@ public class AuthController {
             redirectAttributes.addFlashAttribute("success", "Registration successful! Please login.");
             return "redirect:/login";
         } catch (IllegalArgumentException e) {
-            result.rejectValue(null, "error.user", e.getMessage());
+            result.reject("registration.error", "Registration failed. Please check your information and try again.");
             return "register";
         }
     }

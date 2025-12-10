@@ -37,12 +37,9 @@ public class UserService implements UserDetailsService {
     
     @Transactional
     public User registerUser(UserRegistrationDto registrationDto) {
-        if (userRepository.existsByUsername(registrationDto.getUsername())) {
-            throw new IllegalArgumentException("Username already exists");
-        }
-        
-        if (userRepository.existsByEmail(registrationDto.getEmail())) {
-            throw new IllegalArgumentException("Email already exists");
+        if (userRepository.existsByUsername(registrationDto.getUsername()) ||
+            userRepository.existsByEmail(registrationDto.getEmail())) {
+            throw new IllegalArgumentException("Username or email already exists");
         }
         
         User user = new User();

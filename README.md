@@ -101,7 +101,15 @@ A full-featured todo application built with Spring Boot 3.x, featuring user auth
    ```
 
 2. **Update database credentials (if different):**
-   Edit `src/main/resources/application-prod.properties`:
+   
+   You can set environment variables:
+   ```bash
+   export DB_URL=jdbc:postgresql://localhost:5432/tododb
+   export DB_USERNAME=your_username
+   export DB_PASSWORD=your_password
+   ```
+   
+   Or edit `src/main/resources/application-prod.properties`:
    ```properties
    spring.datasource.url=jdbc:postgresql://localhost:5432/tododb
    spring.datasource.username=your_username
